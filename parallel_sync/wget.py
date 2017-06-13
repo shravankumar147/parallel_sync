@@ -8,6 +8,8 @@ sys.path.append(os.path.realpath("{}/..".format(BASE_DIR)))
 import executor
 import compression
 TIMEOUT = 40
+cwd = os.getcwd()
+target_dir = cwd + "/tmp"
 
 def __url_to_filename(url):
     """ retrieves the filename from the url """
@@ -17,7 +19,7 @@ def __url_to_filename(url):
     return filename
 
 
-def download(target_dir, urls, filenames=None,\
+def download(urls, target_dir=target_dir, filenames=None,\
     parallelism=10, creds=None, tries=3, extract=False):
     """ downloads large files either locally or on a remote machine
     @target_dir: where to download to
